@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 class Gasto {
     private String descripcion;
-    private double monto;
+    private double coste;
     private String categoria;
 
     public Gasto(String descripcion, double monto, String categoria) {
         this.descripcion = descripcion;
-        this.monto = monto;
+        this.coste = monto;
         this.categoria = categoria;
     }
 
     public double getMonto() {
-        return monto;
+        return coste;
     }
 
     public String getCategoria() {
@@ -23,7 +23,7 @@ class Gasto {
 
     @Override
     public String toString() {
-        return descripcion + " (" + categoria + "): $" + monto;
+        return descripcion + " (" + categoria + "): $" + coste;
     }
 }
 
