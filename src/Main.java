@@ -7,13 +7,13 @@ class Gasto {
     private double coste;
     private String categoria;
 
-    public Gasto(String descripcion, double monto, String categoria) {
+    public Gasto(String descripcion, double coste, String categoria) {
         this.descripcion = descripcion;
-        this.coste = monto;
+        this.coste = coste;
         this.categoria = categoria;
     }
 
-    public double getMonto() {
+    public double getCoste() {
         return coste;
     }
 
@@ -34,8 +34,8 @@ class ControlGastos {
         gastos = new ArrayList<>();
     }
 
-    public void añadirGasto(String descripcion, double monto, String categoria) {
-        Gasto gasto = new Gasto(descripcion, monto, categoria);
+    public void añadirGasto(String descripcion, double coste, String categoria) {
+        Gasto gasto = new Gasto(descripcion, coste, categoria);
         gastos.add(gasto);
     }
 
@@ -53,7 +53,7 @@ class ControlGastos {
     public void calcularTotalGastos() {
         double total = 0;
         for (Gasto gasto : gastos) {
-            total += gasto.getMonto();
+            total += gasto.getCoste();
         }
         System.out.println("Total de gastos: $" + total);
     }
@@ -62,8 +62,8 @@ class ControlGastos {
         HashMap<String, Double> categoriaTotales = new HashMap<>();
         for (Gasto gasto : gastos) {
             String categoria = gasto.getCategoria();
-            double monto = gasto.getMonto();
-            categoriaTotales.put(categoria, categoriaTotales.getOrDefault(categoria, 0.0) + monto);
+            double coste = gasto.getCoste();
+            categoriaTotales.put(categoria, categoriaTotales.getOrDefault(categoria, 0.0) + coste);
         }
 
         System.out.println("Gastos por categoría:");
@@ -92,12 +92,12 @@ public class Main {
             if (opcion == 1) {
                 System.out.print("Descripción del gasto: ");
                 String descripcion = scanner.nextLine();
-                System.out.print("Monto: ");
-                double monto = scanner.nextDouble();
+                System.out.print("Coste: ");
+                double coste = scanner.nextDouble();
                 scanner.nextLine(); // Consumir la nueva línea
                 System.out.print("Categoría del gasto: ");
                 String categoria = scanner.nextLine();
-                controlGastos.añadirGasto(descripcion, monto, categoria);
+                controlGastos.añadirGasto(descripcion, coste, categoria);
                 System.out.println("Gasto añadido correctamente.\n");
             } else if (opcion == 2) {
                 controlGastos.mostrarGastos();
